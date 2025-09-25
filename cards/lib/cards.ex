@@ -53,4 +53,15 @@ defmodule Cards do
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
+
+  ## Pattern matching example
+  ## { hand, rest } = Cards.deal(deck, 5)
+  ## hand would be the first 5 cards, rest would be the remaining cards in the deck
+
+  ## this is a method to save the deck to a file
+  def save(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
+  end
+
 end
