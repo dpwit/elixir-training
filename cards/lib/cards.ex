@@ -64,4 +64,11 @@ defmodule Cards do
     File.write(filename, binary)
   end
 
+  ## this is a method to load a deck from a file
+  def load(filename) do
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term binary
+      {:error, _reason} -> "That file does not exist" # using _ to ignore the variable, even though it is passed in the tuple.
+    end
+  end
 end
