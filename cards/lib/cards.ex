@@ -71,4 +71,12 @@ defmodule Cards do
       {:error, _reason} -> "That file does not exist" # using _ to ignore the variable, even though it is passed in the tuple.
     end
   end
+
+  ## this is a method to create a hand of cards and call 3 other methods in the process.
+  def create_hand(hand_size) do
+    Cards.create_deck()
+    |> Cards.shuffle()
+    |> Cards.deal(hand_size)
+    |> elem(0) # get the first element of the tuple returned by deal/2
+  end
 end
