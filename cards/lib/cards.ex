@@ -15,12 +15,27 @@ defmodule Cards do
 
    ## this is a list comprehension
    ## for each suit in suits, and for each value in values, combine them into a string
-    for suit <- suits do
-      for value <- values do
+   ## this may not be the best approach for a real deck of cards, but it works for this example.
+  #   for suit <- suits do
+  #     for value <- values do
+  #       "#{value} of #{suit}"
+  #     end
+  #   end
+  # end
+    ## Option 1: Using List.flatten/1 to flatten the list of lists into a single list
+  # cards = for suit <- suits do
+  #     for value <- values do
+  #       "#{value} of #{suit}"
+  #     end
+  #   end
+  #   List.flatten(cards) # flatten the list of lists into a single list
+
+    ## Option 2: Best, neatest approach - using a single list comprehension with multiple generators.
+    for suit <- suits, value <- values do
         "#{value} of #{suit}"
       end
     end
-  end
+
 
   ## this is a method to shuffle the cards
   ## deck is the argument to the shuffle method.
