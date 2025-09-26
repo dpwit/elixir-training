@@ -4,11 +4,18 @@
 ## this is a method
 defmodule Cards do
 
+  @moduledoc """
+  Provides methods for creating and handling a deck of cards.
+  """
+
   def hello do
     "Ciao!" # you could use return here, it still works but not needed.
   end
 
   ## this is a method to create an array of playing cards
+  @doc """
+  Returns a list of strings representing a deck of playing cards.
+  """
   def create_deck do
    values = ["Ace", "Two", "Three", "Four", "Five"] # always use double quotes in Elixir
    suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
@@ -50,6 +57,17 @@ defmodule Cards do
   end
 
   ## this is a method to deal a hand of cards
+  @doc """
+  Divides a deck into a hand and the remainder of the deck.
+  The `hand_size` argument indicates how many cards should be in the hand.
+
+  ## Example
+      iex> deck = Cards.create_deck()
+      iex> { hand, deck } = Cards.deal(deck, 1)
+      iex> hand
+      ["Ace of Spades"]
+
+  """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
