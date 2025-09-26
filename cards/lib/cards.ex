@@ -8,10 +8,6 @@ defmodule Cards do
   Provides methods for creating and handling a deck of cards.
   """
 
-  def hello do
-    "Ciao!" # you could use return here, it still works but not needed.
-  end
-
   ## this is a method to create an array of playing cards
   @doc """
   Returns a list of strings representing a deck of playing cards.
@@ -52,6 +48,35 @@ defmodule Cards do
   end
 
   ## this is a method to check if a card is in the deck - returns true or false (searching a list)
+
+  @doc """
+  Determines whether a deck contains a given card.
+
+  ## Example
+      iex> deck = Cards.create_deck()
+      iex> Cards.contains?(deck, "Ace of Spades")
+      true
+
+      iex> deck = Cards.create_deck()
+      iex> Cards.contains?(deck, "Two of Diamonds")
+      true
+
+      iex> deck = Cards.create_deck()
+      iex> Cards.contains?(deck, "Three of Hearts")
+      true
+
+      iex> deck = Cards.create_deck()
+      iex> Cards.contains?(deck, "Four of Clubs")
+      true
+
+      iex> deck = Cards.create_deck()
+      iex> Cards.contains?(deck, "Five of Spades")
+      true
+
+      iex> deck = Cards.create_deck()
+      iex> Cards.contains?(deck, "Joker")
+      false
+  """
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
@@ -66,6 +91,12 @@ defmodule Cards do
       iex> { hand, deck } = Cards.deal(deck, 1)
       iex> hand
       ["Ace of Spades"]
+
+  ## Example
+      iex> deck = Cards.create_deck()
+      iex> { hand, deck } = Cards.deal(deck, 2)
+      iex> hand
+      ["Ace of Spades", "Two of Spades"]
 
   """
   def deal(deck, hand_size) do
