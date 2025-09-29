@@ -28,5 +28,14 @@ defmodule Identicon do
     %Identicon.Image{image | color: {r, g, b}} # r, g, b are the first three elements of the list and is a tuple.
   end
 
+  ## equivalent javaScript jsut for reference.
+  # pick_color: function(image) {
+  #   var r = image.hex[0];
+  #   var g = image.hex[1];
+  #   var b = image.hex[2];
+
+  #   image.color = [r, g, b];
+  #   return image;
+  #   }
 
 end
