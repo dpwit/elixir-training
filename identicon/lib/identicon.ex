@@ -14,6 +14,7 @@ defmodule Identicon do
     input
     |> hash_input
     |> pick_color
+    |> build_grid
   end
 
   def hash_input(input) do
@@ -37,5 +38,16 @@ defmodule Identicon do
   #   image.color = [r, g, b];
   #   return image;
   #   }
+
+  def build_grid(%Identicon.Image{hex: hex} = image) do
+    grid =
+      hex
+      |> Enum.chunk_every(3, 3, :discard) # chunk the list into sublists of 3 elements each.
+      |> Enum.map(&mirror_row/1) # & is a reference to a function - mirror each row
+      |> List.flatten # flatten the list of lists into a single list
+      |> Enum.with_index # add index to each element
+
+    %Identicon.Image{image | grid: grid}
+  end
 
 end
