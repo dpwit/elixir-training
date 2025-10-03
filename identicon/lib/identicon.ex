@@ -98,4 +98,6 @@ defmodule Identicon do
     File.write("#{input}.png", image)
   end
 
+  ## The :egd library is an Erlang library and not part of the standard Elixir or Erlang-OTP library anymore. It needs to be added as a dependency in the mix.exs file.
+
 end
